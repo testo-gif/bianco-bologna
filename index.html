@@ -323,6 +323,113 @@
   .footer-social { display: flex; gap: 20px; }
   .footer-social a { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.35); text-decoration: none; transition: color .2s; }
   .footer-social a:hover { color: var(--gold); }
+
+  /* ── HAMBURGER + MOBILE MENU ── */
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 4px; background: none; border: none;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--black); transition: all .3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 99;
+    background: var(--white); flex-direction: column;
+    align-items: center; justify-content: center; gap: 32px;
+    padding-top: 80px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--font-serif); font-size: 36px; font-weight: 300;
+    color: var(--black); text-decoration: none; letter-spacing: .05em;
+    transition: color .2s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu-phone {
+    margin-top: 16px;
+    font-size: 13px; color: var(--taupe); letter-spacing: .08em;
+  }
+  .mobile-menu-phone a { color: var(--black); text-decoration: none; font-weight: 400; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+
+    /* Nav */
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .nav-actions { gap: 14px; }
+    .hamburger { display: flex; }
+
+    /* Hero */
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 56px 24px 48px; order: 2; }
+    .hero-right { order: 1; min-height: 52vw; }
+    .hero-visual-letter { font-size: 160px; }
+    .hero-badge { bottom: 20px; padding: 16px 20px; }
+    .hero-badge-addr { font-size: 11px; }
+    .hero-title { font-size: 46px; }
+    .hero-desc { max-width: 100%; }
+    .btn-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .btn-primary { width: 100%; text-align: center; }
+
+    /* Marquee */
+    .marquee-item { padding: 0 20px; }
+
+    /* Sections */
+    .section { padding: 64px 24px; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+    /* Product grids */
+    .grid-3 { grid-template-columns: 1fr; gap: 2px; }
+    .product-overlay { opacity: 1; }
+    .product-info { transform: translateY(0); }
+    .product-wish { opacity: 0 !important; }
+
+    /* Editorial */
+    .editorial { grid-template-columns: 1fr; }
+    .editorial-visual { min-height: 220px; }
+    .editorial-content { padding: 48px 24px; }
+    .editorial-title { font-size: 34px; }
+    .btn-outline-gold { align-self: stretch; text-align: center; }
+
+    /* Categories */
+    .categories { padding: 64px 24px; }
+    .cat-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+
+    /* Info section */
+    .info-section { grid-template-columns: 1fr; gap: 40px; padding: 64px 24px; }
+    .map-wrap iframe { height: 300px; }
+
+    /* Testimonials */
+    .testimonials { padding: 64px 24px; }
+    .test-grid { grid-template-columns: 1fr; gap: 16px; }
+
+    /* Newsletter */
+    .newsletter { padding: 64px 24px; }
+    .newsletter-title { font-size: 34px; }
+    .newsletter-form { flex-direction: column; max-width: 100%; }
+    .newsletter-form input { border-right: 1px solid rgba(255,255,255,.12); border-bottom: none; }
+    .newsletter-form button { padding: 15px; }
+
+    /* Footer */
+    footer { padding: 48px 24px 28px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+    /* Info title */
+    .info-title { font-size: 34px; }
+    .section-title { font-size: 32px; }
+  }
+
+  @media (max-width: 480px) {
+    .cat-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 38px; }
+  }
 </style>
 </head>
 <body>
@@ -341,8 +448,23 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="closeMenu()">Novità</a>
+  <a href="#" onclick="closeMenu()">Collezioni</a>
+  <a href="#" onclick="closeMenu()">Accessori</a>
+  <a href="#info" onclick="closeMenu()">Orari</a>
+  <a href="#info" onclick="closeMenu()">Contatti</a>
+  <div class="mobile-menu-phone">
+    <a href="tel:+390516486430">051 648 6430</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -604,5 +726,19 @@
   </div>
 </footer>
 
+<script>
+  const btn  = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMenu() {
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
 </body>
 </html>
