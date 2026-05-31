@@ -324,6 +324,22 @@
   .footer-social a { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.35); text-decoration: none; transition: color .2s; }
   .footer-social a:hover { color: var(--gold); }
 
+  /* ── INSTAGRAM GRID ── */
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    align-items: start;
+  }
+  .insta-grid .instagram-media { min-width: 0 !important; width: 100% !important; }
+
+  @media (max-width: 900px) {
+    .insta-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .insta-grid { grid-template-columns: 1fr; }
+  }
+
   /* ── HAMBURGER + MOBILE MENU ── */
   .hamburger {
     display: none; flex-direction: column; gap: 5px;
@@ -653,6 +669,26 @@
   </div>
 </section>
 
+<!-- INSTAGRAM -->
+<section class="section instagram-section" style="background:var(--offwhite);padding-bottom:80px;">
+  <div class="section-header">
+    <div>
+      <p class="section-tag">Social</p>
+      <h2 class="section-title">Su <em>Instagram</em></h2>
+    </div>
+    <a href="https://www.instagram.com/biancoshop_/" target="_blank" rel="noopener" class="btn-ghost">@biancoshop_</a>
+  </div>
+  <div class="insta-grid">
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DYe-07LDZfX/" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DYeowxYM1OM/" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DXeCQivDOML/" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DW_HNBujBYh/" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote>
+  </div>
+  <div style="text-align:center;margin-top:40px;">
+    <a href="https://www.instagram.com/biancoshop_/" target="_blank" rel="noopener" class="btn-primary">Seguici su Instagram</a>
+  </div>
+</section>
+
 <!-- RECENSIONI -->
 <section class="testimonials">
   <p class="section-tag">Recensioni</p>
@@ -726,6 +762,7 @@
   </div>
 </footer>
 
+<script async src="//www.instagram.com/embed.js"></script>
 <script>
   const btn  = document.getElementById('hamburger');
   const menu = document.getElementById('mobileMenu');
